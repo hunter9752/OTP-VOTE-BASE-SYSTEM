@@ -1,0 +1,25 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="24" cy="24" r="22" fill="url(#gradient1)" opacity="0.15"/>
+  
+  <!-- Ballot Box -->
+  <rect x="14" y="22" width="20" height="15" rx="2" fill="url(#gradient1)"/>
+  <rect x="14" y="18" width="20" height="4" rx="1.5" fill="#4f46e5"/>
+  
+  <!-- Ballot Paper -->
+  <rect x="21" y="10" width="6" height="10" rx="1" fill="white" opacity="0.95"/>
+  <line x1="23" y1="13" x2="27" y2="13" stroke="#6366f1" stroke-width="1"/>
+  <line x1="23" y1="16" x2="27" y2="16" stroke="#6366f1" stroke-width="1"/>
+  
+  <!-- Checkmark Circle -->
+  <circle cx="24" cy="24" r="7" fill="#10b981"/>
+  <path d="M 21 24 L 23 26 L 27 22" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

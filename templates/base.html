@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Online Voting System{% endblock %}</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +23,17 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="nav-logo"><i class="fas fa-vote-yea"></i> VoteSecure</h1>
+            <a href="{{ url_for('index') }}" class="nav-logo-link">
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="VoteSecure Logo" class="nav-logo-full">
+                <img src="{{ url_for('static', filename='logo-icon.svg') }}" alt="VoteSecure" class="nav-logo-mobile">
+            </a>
             <div class="nav-links">
-                <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a>
-                <a href="{{ url_for('results') }}"><i class="fas fa-chart-bar"></i> Results</a>
+                <a href="{{ url_for('index') }}" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a>
+                <a href="{{ url_for('results') }}" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Results</span></a>
                 {% if session.get('email') %}
-                    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="{{ url_for('logout') }}" class="nav-link nav-link-logout"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
                 {% else %}
-                    <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="{{ url_for('login') }}" class="nav-link nav-link-primary"><i class="fas fa-sign-in-alt"></i> <span>Login</span></a>
                 {% endif %}
             </div>
         </div>
@@ -47,8 +53,20 @@
         {% block content %}{% endblock %}
     </div>
 
-    <footer>
-        <p><i class="fas fa-shield-alt"></i> &copy; 2026 OTP-Based Online Voting System | Secure • Transparent • Democratic</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='logo-icon.svg') }}" alt="VoteSecure" class="footer-logo-img">
+            </div>
+            <div class="footer-text">
+                <p class="footer-tagline">Secure • Transparent • Democratic</p>
+                <p class="footer-copyright">&copy; 2026 VoteSecure. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ url_for('results') }}"><i class="fas fa-chart-bar"></i> Results</a>
+            </div>
+        </div>
     </footer>
 
     <!-- Canvas Confetti for celebrations -->
