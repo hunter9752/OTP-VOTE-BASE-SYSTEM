@@ -1,21 +1,37 @@
-# OTP-Based Online Voting System
+# 🗳️ VoteSecure - Modern OTP-Based Voting System
 
-A secure electronic voting system built with Python Flask and PostgreSQL (Supabase). This system uses One-Time Password (OTP) authentication to ensure secure and transparent voting.
+A secure, modern electronic voting system built with Python Flask and PostgreSQL (Supabase). Features a beautiful glassmorphism UI with smooth animations and OTP authentication for secure voting.
 
-## Features
+## ✨ Features
 
-- ✅ **Simple Login**: No registration required - just enter name and email
+- 🎨 **Modern UI/UX**: Glassmorphism design with smooth animations
 - 🔐 **OTP Authentication**: Email-based OTP verification for security
 - 🗳️ **Multiple Parties**: Vote for BJP, Congress, AAP, or NOTA
 - 🛡️ **Duplicate Prevention**: Each user can vote only once
-- 📊 **Live Results**: Real-time vote counting and results display
-- 🎨 **Modern UI**: Beautiful, responsive interface with party-specific colors
+- 📊 **Live Results**: Real-time vote counting with animated progress bars
+- 🎉 **Celebrations**: Confetti animation on successful vote
+- 📱 **Responsive**: Mobile-first design that works on all devices
+- ♿ **Accessible**: ARIA labels and keyboard navigation support
 
-## Tech Stack
+## 🎨 Design Features
+
+- **Glassmorphism UI**: Modern frosted glass effect with backdrop blur
+- **Gradient Backgrounds**: Animated gradient backgrounds with particle effects
+- **Smooth Animations**: Entrance animations, hover effects, and transitions
+- **Interactive Elements**: 3D card effects, ripple buttons, animated progress bars
+- **Google Fonts**: Inter for body text, Poppins for headings
+- **Font Awesome Icons**: Beautiful icons throughout the interface
+- **Confetti Celebration**: Animated confetti when vote is successfully cast
+- **Auto-dismiss Alerts**: Notifications that fade out automatically
+
+## 🚀 Tech Stack
 
 - **Backend**: Python Flask
 - **Database**: PostgreSQL (Supabase)
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML5, CSS3 (Modern CSS with Variables), JavaScript (ES6+)
+- **Fonts**: Google Fonts (Inter, Poppins)
+- **Icons**: Font Awesome 6
+- **Animations**: Canvas Confetti, CSS Keyframes
 - **Authentication**: Email-based OTP
 
 ## Installation
@@ -66,15 +82,22 @@ SIDDHI PROJECT/
 ├── otp_service.py         # OTP generation and email
 ├── requirements.txt       # Python dependencies
 ├── .env.example          # Environment variables template
+├── .gitignore            # Git ignore rules
+├── README.md             # Documentation
 ├── templates/            # HTML templates
-│   ├── base.html
-│   ├── index.html
-│   ├── login.html
-│   ├── verify_otp.html
-│   ├── vote.html
-│   └── results.html
-└── static/              # CSS and static files
-    └── style.css
+│   ├── base.html         # Base template with modern nav
+│   ├── index.html        # Homepage with features
+│   ├── login.html        # Login form
+│   ├── verify_otp.html   # OTP verification
+│   ├── vote.html         # Voting interface
+│   └── results.html      # Results dashboard
+└── static/              # Static assets
+    ├── style.css         # Modern CSS with glassmorphism
+    ├── script.js         # Interactive JavaScript
+    ├── AAP.jpeg          # Party logos
+    ├── BJP.jpeg
+    ├── CONGRSS.png
+    └── NOTa.png
 ```
 
 ## Configuration

@@ -9,19 +9,19 @@
 
     <div class="features">
         <div class="feature-card">
-            <div class="feature-icon">🔒</div>
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
             <h3>Secure Authentication</h3>
             <p>OTP-based verification ensures only authorized voters can participate</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
             <h3>One Vote Per Person</h3>
             <p>Advanced system prevents duplicate voting and ensures fairness</p>
         </div>
 
         <div class="feature-card">
-            <div class="feature-icon">📊</div>
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
             <h3>Real-time Results</h3>
             <p>View live voting results after casting your vote</p>
         </div>
@@ -29,15 +29,15 @@
 
     <div class="cta-buttons">
         {% if not session.get('email') %}
-        <a href="{{ url_for('login') }}" class="btn btn-primary">Login to Vote</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
         {% else %}
         {% if not session.get('otp_verified') %}
-        <a href="{{ url_for('verify_otp') }}" class="btn btn-primary">Verify OTP</a>
+        <a href="{{ url_for('verify_otp') }}" class="btn btn-primary"><i class="fas fa-key"></i> Verify OTP</a>
         {% else %}
-        <a href="{{ url_for('vote') }}" class="btn btn-primary">Cast Your Vote</a>
+        <a href="{{ url_for('vote') }}" class="btn btn-primary"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
         {% endif %}
         {% endif %}
-        <a href="{{ url_for('results') }}" class="btn btn-secondary">View Results</a>
+        <a href="{{ url_for('results') }}" class="btn btn-secondary"><i class="fas fa-chart-bar"></i> View Results</a>
     </div>
 </div>
 
@@ -45,22 +45,22 @@
     <h2>How It Works</h2>
     <div class="steps">
         <div class="step">
-            <div class="step-number">1</div>
+            <div class="step-number"><i class="fas fa-user"></i></div>
             <h3>Login</h3>
             <p>Enter your name and email address</p>
         </div>
         <div class="step">
-            <div class="step-number">2</div>
+            <div class="step-number"><i class="fas fa-key"></i></div>
             <h3>Verify OTP</h3>
             <p>Enter the OTP sent to your email</p>
         </div>
         <div class="step">
-            <div class="step-number">3</div>
+            <div class="step-number"><i class="fas fa-vote-yea"></i></div>
             <h3>Vote</h3>
             <p>Select your preferred candidate</p>
         </div>
         <div class="step">
-            <div class="step-number">4</div>
+            <div class="step-number"><i class="fas fa-chart-pie"></i></div>
             <h3>View Results</h3>
             <p>See the live voting results</p>
         </div>

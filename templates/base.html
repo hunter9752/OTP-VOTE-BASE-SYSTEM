@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Online Voting System{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="nav-logo">🗳️ Online Voting System</h1>
+            <h1 class="nav-logo"><i class="fas fa-vote-yea"></i> VoteSecure</h1>
             <div class="nav-links">
-                <a href="{{ url_for('index') }}">Home</a>
-                <a href="{{ url_for('results') }}">Results</a>
+                <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a>
+                <a href="{{ url_for('results') }}"><i class="fas fa-chart-bar"></i> Results</a>
                 {% if session.get('email') %}
-                    <a href="{{ url_for('logout') }}">Logout</a>
+                    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 {% else %}
-                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Login</a>
                 {% endif %}
             </div>
         </div>
@@ -37,7 +46,15 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 OTP-Based Online Voting System.this system is made by Siddhi and her team ab ki bar bjp sarkar </p>
+        <p><i class="fas fa-shield-alt"></i> &copy; 2026 OTP-Based Online Voting System | Secure • Transparent • Democratic</p>
     </footer>
+
+    <!-- Canvas Confetti for celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
 </body>
 </html>

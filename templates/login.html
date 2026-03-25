@@ -10,16 +10,16 @@
 
         <form method="POST" action="{{ url_for('login') }}">
             <div class="form-group">
-                <label for="name">Full Name</label>
+                <label for="name"><i class="fas fa-user"></i> Full Name</label>
                 <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name">
             </div>
 
             <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
                 <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your email">
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Send OTP</button>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send OTP</button>
         </form>
 
         <div class="form-footer">

@@ -43,12 +43,61 @@
 
     {% if not session.get('email') %}
     <div class="results-cta">
-        <a href="{{ url_for('login') }}" class="btn btn-primary">Login to Vote</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
     </div>
     {% elif session.get('otp_verified') and not session.get('has_voted') %}
     <div class="results-cta">
-        <a href="{{ url_for('vote') }}" class="btn btn-primary">Cast Your Vote</a>
+        <a href="{{ url_for('vote') }}" class="btn btn-primary"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
     </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Trigger confetti if user just voted
+    {% if session.get('has_voted') %}
+    window.addEventListener('load', function() {
+        // Fire confetti
+        var duration = 3 * 1000;
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        var interval = setInterval(function() {
+            var timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            var particleCount = 50 * (timeLeft / duration);
+            
+            confetti(Object.assign({}, defaults, { 
+                particleCount, 
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } 
+            }));
+            confetti(Object.assign({}, defaults, { 
+                particleCount, 
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } 
+            }));
+        }, 250);
+    });
+    {% endif %}
+
+    // Animate progress bars
+    window.addEventListener('load', function() {
+        const progressBars = document.querySelectorAll('.progress-fill');
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 100);
+        });
+    });
+</script>
 {% endblock %}
