@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Verify OTP - Online Voting System{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2 class="form-title">Verify OTP</h2>
+        <p class="form-subtitle">Enter the 6-digit code sent to {{ session.get('email', 'your email') }}</p>
+
+        <form method="POST" action="{{ url_for('verify_otp') }}">
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" name="otp" class="form-input otp-input" maxlength="6" pattern="[0-9]{6}"
+                    required placeholder="000000" autocomplete="off">
+                <small class="form-help">OTP is valid for 5 minutes</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
+        </form>
+
+        <div class="form-footer">
+            <p>Didn't receive the OTP? <a href="{{ url_for('resend_otp') }}">Resend OTP</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Auto-focus and auto-submit on OTP input
+    const otpInput = document.getElementById('otp');
+    otpInput.addEventListener('input', function (e) {
+        // Only allow numbers
+        this.value = this.value.replace(/[^0-9]/g, '');
+
+        // Auto-submit when 6 digits entered
+        if (this.value.length === 6) {
+            this.form.submit();
+        }
+    });
+</script>
+{% endblock %}

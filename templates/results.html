@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Results - Online Voting System{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <h2 class="results-title">Live Voting Results</h2>
+    <p class="results-subtitle">Total Votes Cast: <strong>{{ total_votes }}</strong></p>
+
+    <div class="results-grid">
+        {% for result in results %}
+        {% set percentage = (result['votes'] / total_votes * 100) if total_votes > 0 else 0 %}
+        <div class="result-card party-{{ result['party'].lower() }}">
+            <div class="result-header">
+                <div class="result-icon">
+                    {% if result['party'] == 'BJP' %}
+                    <img src="{{ url_for('static', filename='BJP.jpeg') }}" alt="BJP Logo">
+                    {% elif result['party'] == 'Congress' %}
+                    <img src="{{ url_for('static', filename='CONGRSS.png') }}" alt="Congress Logo">
+                    {% elif result['party'] == 'AAP' %}
+                    <img src="{{ url_for('static', filename='AAP.jpeg') }}" alt="AAP Logo">
+                    {% elif result['party'] == 'NOTA' %}
+                    <img src="{{ url_for('static', filename='NOTa.png') }}" alt="NOTA">
+                    {% endif %}
+                </div>
+                <div class="result-info">
+                    <h3>{{ result['party'] }}</h3>
+                    <p>{{ result['name'] }}</p>
+                </div>
+            </div>
+
+            <div class="result-stats">
+                <div class="votes-count">{{ result['votes'] }} votes</div>
+                <div class="votes-percentage">{{ "%.1f"|format(percentage) }}%</div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ percentage }}%"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if not session.get('email') %}
+    <div class="results-cta">
+        <a href="{{ url_for('login') }}" class="btn btn-primary">Login to Vote</a>
+    </div>
+    {% elif session.get('otp_verified') and not session.get('has_voted') %}
+    <div class="results-cta">
+        <a href="{{ url_for('vote') }}" class="btn btn-primary">Cast Your Vote</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
