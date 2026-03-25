@@ -3,25 +3,46 @@
 {% block title %}Home - Online Voting System{% endblock %}
 
 {% block content %}
-<div class="hero">
-    <h1 class="hero-title">Welcome to Online Voting System</h1>
-    <p class="hero-subtitle">Secure, Transparent, and Convenient Voting Experience</p>
+<div class="hero animate-on-scroll">
+    <h1 class="hero-title animated-gradient-text">Welcome to VoteSecure</h1>
+    <p class="hero-subtitle float-animation">Secure, Transparent, and Convenient Voting Experience</p>
+
+    <!-- Hero Illustration SVG -->
+    <div class="hero-illustration" style="margin: 2rem auto; max-width: 400px;">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">
+            <!-- Ballot Box -->
+            <rect x="150" y="150" width="100" height="80" fill="#6366f1" rx="5" class="float-animation"/>
+            <rect x="150" y="140" width="100" height="15" fill="#4f46e5" rx="3"/>
+            <!-- Ballot Paper -->
+            <rect x="180" y="100" width="40" height="60" fill="#fff" rx="2" style="animation: floatUpDown 2s ease-in-out infinite; animation-delay: 0.5s;"/>
+            <line x1="190" y1="115" x2="210" y2="115" stroke="#6366f1" stroke-width="2"/>
+            <line x1="190" y1="125" x2="210" y2="125" stroke="#6366f1" stroke-width="2"/>
+            <line x1="190" y1="135" x2="210" y2="135" stroke="#6366f1" stroke-width="2"/>
+            <!-- Checkmark -->
+            <circle cx="200" cy="180" r="25" fill="#10b981" style="animation: pulse 2s ease-in-out infinite;"/>
+            <path d="M 190 180 L 197 187 L 210 174" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Decorative elements -->
+            <circle cx="100" cy="100" r="15" fill="#f093fb" opacity="0.6" class="float-animation" style="animation-delay: 1s;"/>
+            <circle cx="300" cy="120" r="20" fill="#8b5cf6" opacity="0.6" class="float-animation" style="animation-delay: 1.5s;"/>
+            <circle cx="120" cy="220" r="12" fill="#3b82f6" opacity="0.6" class="float-animation" style="animation-delay: 2s;"/>
+        </svg>
+    </div>
 
     <div class="features">
-        <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+        <div class="feature-card holographic stagger-child magnetic">
+            <div class="feature-icon pulse-ring"><i class="fas fa-lock"></i></div>
             <h3>Secure Authentication</h3>
             <p>OTP-based verification ensures only authorized voters can participate</p>
         </div>
 
-        <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="feature-card holographic stagger-child magnetic">
+            <div class="feature-icon pulse-ring"><i class="fas fa-shield-alt"></i></div>
             <h3>One Vote Per Person</h3>
             <p>Advanced system prevents duplicate voting and ensures fairness</p>
         </div>
 
-        <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="feature-card holographic stagger-child magnetic">
+            <div class="feature-icon pulse-ring"><i class="fas fa-chart-line"></i></div>
             <h3>Real-time Results</h3>
             <p>View live voting results after casting your vote</p>
         </div>
@@ -29,38 +50,38 @@
 
     <div class="cta-buttons">
         {% if not session.get('email') %}
-        <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary liquid-button neon-glow"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
         {% else %}
         {% if not session.get('otp_verified') %}
-        <a href="{{ url_for('verify_otp') }}" class="btn btn-primary"><i class="fas fa-key"></i> Verify OTP</a>
+        <a href="{{ url_for('verify_otp') }}" class="btn btn-primary liquid-button neon-glow"><i class="fas fa-key"></i> Verify OTP</a>
         {% else %}
-        <a href="{{ url_for('vote') }}" class="btn btn-primary"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
+        <a href="{{ url_for('vote') }}" class="btn btn-primary liquid-button neon-glow"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
         {% endif %}
         {% endif %}
-        <a href="{{ url_for('results') }}" class="btn btn-secondary"><i class="fas fa-chart-bar"></i> View Results</a>
+        <a href="{{ url_for('results') }}" class="btn btn-secondary liquid-button"><i class="fas fa-chart-bar"></i> View Results</a>
     </div>
 </div>
 
-<div class="how-it-works">
+<div class="how-it-works animate-on-scroll">
     <h2>How It Works</h2>
     <div class="steps">
-        <div class="step">
-            <div class="step-number"><i class="fas fa-user"></i></div>
+        <div class="step stagger-child">
+            <div class="step-number gradient-border pulse-ring"><i class="fas fa-user"></i></div>
             <h3>Login</h3>
             <p>Enter your name and email address</p>
         </div>
-        <div class="step">
-            <div class="step-number"><i class="fas fa-key"></i></div>
+        <div class="step stagger-child">
+            <div class="step-number gradient-border pulse-ring"><i class="fas fa-key"></i></div>
             <h3>Verify OTP</h3>
             <p>Enter the OTP sent to your email</p>
         </div>
-        <div class="step">
-            <div class="step-number"><i class="fas fa-vote-yea"></i></div>
+        <div class="step stagger-child">
+            <div class="step-number gradient-border pulse-ring"><i class="fas fa-vote-yea"></i></div>
             <h3>Vote</h3>
             <p>Select your preferred candidate</p>
         </div>
-        <div class="step">
-            <div class="step-number"><i class="fas fa-chart-pie"></i></div>
+        <div class="step stagger-child">
+            <div class="step-number gradient-border pulse-ring"><i class="fas fa-chart-pie"></i></div>
             <h3>View Results</h3>
             <p>See the live voting results</p>
         </div>

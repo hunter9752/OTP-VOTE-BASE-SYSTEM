@@ -3,38 +3,38 @@
 {% block title %}Cast Your Vote - Online Voting System{% endblock %}
 
 {% block content %}
-<div class="vote-container">
-    <h2 class="vote-title">Cast Your Vote</h2>
+<div class="vote-container animate-on-scroll">
+    <h2 class="vote-title animated-gradient-text">Cast Your Vote</h2>
     <p class="vote-subtitle">Welcome, {{ session.get('name', 'Voter') }}! Select your preferred candidate below:</p>
 
     <form method="POST" action="{{ url_for('vote') }}">
         <div class="candidates-grid">
             {% for candidate in candidates %}
-            <div class="candidate-card">
+            <div class="candidate-card party-{{ candidate['party'].lower() }} stagger-child">
                 <input type="radio" id="candidate-{{ candidate['id'] }}" name="candidate_id"
                     value="{{ candidate['id'] }}" required>
-                <label for="candidate-{{ candidate['id'] }}">
-                    <div class="candidate-icon party-{{ candidate['party'].lower() }}">
+                <label for="candidate-{{ candidate['id'] }}" class="gradient-border spotlight tilt-card">
+                    <div class="candidate-icon">
                         {% if candidate['party'] == 'BJP' %}
-                        <img src="{{ url_for('static', filename='BJP.jpeg') }}" alt="BJP Logo">
+                        <img src="{{ url_for('static', filename='BJP.jpeg') }}" alt="BJP Logo" class="float-animation">
                         {% elif candidate['party'] == 'Congress' %}
-                        <img src="{{ url_for('static', filename='CONGRSS.png') }}" alt="Congress Logo">
+                        <img src="{{ url_for('static', filename='CONGRSS.png') }}" alt="Congress Logo" class="float-animation">
                         {% elif candidate['party'] == 'AAP' %}
-                        <img src="{{ url_for('static', filename='AAP.jpeg') }}" alt="AAP Logo">
+                        <img src="{{ url_for('static', filename='AAP.jpeg') }}" alt="AAP Logo" class="float-animation">
                         {% elif candidate['party'] == 'NOTA' %}
-                        <img src="{{ url_for('static', filename='NOTa.png') }}" alt="NOTA">
+                        <img src="{{ url_for('static', filename='NOTa.png') }}" alt="NOTA" class="float-animation">
                         {% endif %}
                     </div>
-                    <h3 class="candidate-name">{{ candidate['party'] }}</h3>
+                    <h3 class="candidate-name neon-glow">{{ candidate['party'] }}</h3>
                     <p class="candidate-fullname">{{ candidate['name'] }}</p>
-                    <div class="radio-indicator"></div>
+                    <div class="radio-indicator pulse-ring"></div>
                 </label>
             </div>
             {% endfor %}
         </div>
 
         <div class="vote-action">
-            <button type="submit" class="btn btn-primary btn-large"><i class="fas fa-check-circle"></i> Submit Your Vote</button>
+            <button type="submit" class="btn btn-primary btn-large liquid-button neon-glow"><i class="fas fa-check-circle"></i> Submit Your Vote</button>
             <p class="vote-warning"><i class="fas fa-exclamation-triangle"></i> You can only vote once. Please choose carefully!</p>
         </div>
     </form>

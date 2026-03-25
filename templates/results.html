@@ -3,39 +3,39 @@
 {% block title %}Results - Online Voting System{% endblock %}
 
 {% block content %}
-<div class="results-container">
-    <h2 class="results-title">Live Voting Results</h2>
-    <p class="results-subtitle">Total Votes Cast: <strong>{{ total_votes }}</strong></p>
+<div class="results-container animate-on-scroll">
+    <h2 class="results-title animated-gradient-text">Live Voting Results</h2>
+    <p class="results-subtitle">Total Votes Cast: <strong class="neon-glow">{{ total_votes }}</strong></p>
 
     <div class="results-grid">
         {% for result in results %}
         {% set percentage = (result['votes'] / total_votes * 100) if total_votes > 0 else 0 %}
-        <div class="result-card party-{{ result['party'].lower() }}">
+        <div class="result-card party-{{ result['party'].lower() }} stagger-child gradient-border holographic">
             <div class="result-header">
-                <div class="result-icon">
+                <div class="result-icon pulse-ring">
                     {% if result['party'] == 'BJP' %}
-                    <img src="{{ url_for('static', filename='BJP.jpeg') }}" alt="BJP Logo">
+                    <img src="{{ url_for('static', filename='BJP.jpeg') }}" alt="BJP Logo" class="float-animation">
                     {% elif result['party'] == 'Congress' %}
-                    <img src="{{ url_for('static', filename='CONGRSS.png') }}" alt="Congress Logo">
+                    <img src="{{ url_for('static', filename='CONGRSS.png') }}" alt="Congress Logo" class="float-animation">
                     {% elif result['party'] == 'AAP' %}
-                    <img src="{{ url_for('static', filename='AAP.jpeg') }}" alt="AAP Logo">
+                    <img src="{{ url_for('static', filename='AAP.jpeg') }}" alt="AAP Logo" class="float-animation">
                     {% elif result['party'] == 'NOTA' %}
-                    <img src="{{ url_for('static', filename='NOTa.png') }}" alt="NOTA">
+                    <img src="{{ url_for('static', filename='NOTa.png') }}" alt="NOTA" class="float-animation">
                     {% endif %}
                 </div>
                 <div class="result-info">
-                    <h3>{{ result['party'] }}</h3>
+                    <h3 class="neon-glow">{{ result['party'] }}</h3>
                     <p>{{ result['name'] }}</p>
                 </div>
             </div>
 
             <div class="result-stats">
                 <div class="votes-count">{{ result['votes'] }} votes</div>
-                <div class="votes-percentage">{{ "%.1f"|format(percentage) }}%</div>
+                <div class="votes-percentage animated-gradient-text">{{ "%.1f"|format(percentage) }}%</div>
             </div>
 
             <div class="progress-bar">
-                <div class="progress-fill" style="width: {{ percentage }}%"></div>
+                <div class="progress-fill shimmer" style="width: {{ percentage }}%"></div>
             </div>
         </div>
         {% endfor %}
@@ -43,11 +43,11 @@
 
     {% if not session.get('email') %}
     <div class="results-cta">
-        <a href="{{ url_for('login') }}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
+        <a href="{{ url_for('login') }}" class="btn btn-primary liquid-button neon-glow"><i class="fas fa-sign-in-alt"></i> Login to Vote</a>
     </div>
     {% elif session.get('otp_verified') and not session.get('has_voted') %}
     <div class="results-cta">
-        <a href="{{ url_for('vote') }}" class="btn btn-primary"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
+        <a href="{{ url_for('vote') }}" class="btn btn-primary liquid-button neon-glow"><i class="fas fa-vote-yea"></i> Cast Your Vote</a>
     </div>
     {% endif %}
 </div>
